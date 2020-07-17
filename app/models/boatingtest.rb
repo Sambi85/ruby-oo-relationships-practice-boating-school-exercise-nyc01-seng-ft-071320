@@ -3,7 +3,7 @@ class BoatingTest
 
     @@all = []
     
-    def initialize(student, name, status, instructor)
+    def initialize(student, name, status='pending', instructor)
         @student = student
         @name = name
         @status = status

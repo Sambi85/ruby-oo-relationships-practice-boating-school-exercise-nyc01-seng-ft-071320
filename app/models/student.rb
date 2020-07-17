@@ -15,7 +15,7 @@ class Student
         @@all
     end
 
-    def add_boating_test(name, status='pending', instructor)
+    def add_boating_test(name, status, instructor)
         BoatingTest.new(self, name, status, instructor)
     end
 
