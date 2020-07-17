@@ -15,16 +15,19 @@ class Student
         @@all
     end
 
-    def add_boating_test(name, status, instructor)
+    def add_boating_test(name, status='pending', instructor)
         BoatingTest.new(self, name, status, instructor)
     end
 
-    def self.find_student
+    def self.find_student(name)
+        self.all.find do |student|
+            student.name == name
+        end
     end
 
     def student_tests
         BoatingTest.all.select do |bt| 
-         student == self 
+         bt.student == self 
         end
     end
 
@@ -35,8 +38,12 @@ class Student
     end
 
     def grade_percentage       
-        anwser = passed_tests.count/student_tests.count
-        anwser.to_f * 100
+        passed = self.passed_tests.count
+        all_tests = self.student_tests.count
+
+        answer = passed.to_f / all_tests.to_f
+        
+        answer * 100
     end 
 
 
